@@ -1,5 +1,5 @@
 //const { estimatedDocumentCount } = require("../models/usermodel")
-const usermodel = require("../models/usermodel")
+const usermodel = require("../models/userModel")
 const bcrypt = require('bcrypt')
 const nodemailer = require("nodemailer")
 const productmodel = require('../models/productModel')
