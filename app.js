@@ -89,5 +89,5 @@ app.use(function(err,req,res,next){
 
 //start server
 app.listen(3000, () => {
-    console.log('server started at port 3000');
+console.log('server started at port 3000');
 })

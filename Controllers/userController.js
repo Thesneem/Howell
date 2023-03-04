@@ -63,7 +63,7 @@ module.exports = {
 
     }
     catch (err) {
-
+      console.log(err)
       next(err)
     }
   },
@@ -159,7 +159,7 @@ module.exports = {
     }
 
     catch (err) {
-
+      console.log(err)
       next(err)
     }
 
@@ -197,9 +197,11 @@ module.exports = {
         res.redirect('/')
       }
       else {
-        res.render('Login', { loginerror: null })
+        res.render('login', { loginerror: null })
       }
-    } catch (err) {
+    } 
+    catch (err) {
+      console.log(err)
       next(err)
     }
   },
