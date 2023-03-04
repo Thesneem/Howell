@@ -1,0 +1,209 @@
+<%-include('../user/layouts/user-header.ejs') %>
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="breadcrumb__links">
+                      <a href="/"><i class="fa fa-home"></i> Home</a>
+                      <a href="/shoppage">Shop </a>
+                      <span>Cart</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+    <!-- Shop Cart Section Begin -->
+    <section class="shop-cart spad">
+        <div class="container">
+            <div class="row">
+              <section id="cart-container" class="container">
+                <% if (message) { %>
+                  <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+                    <strong>
+                      <%= message.message %>
+                    </strong>
+                  </div>
+                  <% } %>
+
+                <% let Subtotal=0; if (cart.cart.length == 0){%>
+                    <h3 class="text-dark text-center">Cart is empty</h3>
+                    
+                <% }else{ %>
+                <div class="col-lg-12">
+                    <div class="shop__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <% 
+                            cart.cart.forEach(function(items) { %>
+                            <tbody>
+                                <tr id="ctproduct<%= items._id %>">
+                                    <td class="cart__product__item">
+                                        <img src="/admin/images/<%=items.productid.image[0]%>" style="width:60px; height:60px" alt="">
+                                        <div class="cart__product__item__title">
+                                            <h6><%=items.productid.ProductName%></h6>
+                                            <div class="rating">
+                                               Brand:<%=items.productid.Brand%>
+                                            </div>
+                                            <!-- <div class="rating">
+                                                Size:<%=items.productid.Size%>
+                                             </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="cart__price " >$ <span id="<%=items._id%>Price"><%=items.productid.Price%></span></td>
+                                    
+                                    
+                                    <td>
+                                        
+                                            
+                                                <!-- <span class="small text-uppercase text-gray headings-font-family">Quantity</span> -->
+                                              <div class="quantity d-flex align-items-center justify-content-center ">
+                                                <button class="dec-btn p-1 text-danger border-1" onclick="decquantity('<%= items._id %>')">-</button>
+                                                <input class="inputnumber w-3 text-center form-control border-0 shadow-0 text-danger" type="number" disabled max="12" value="<%=items.quantity%>" id="<%=items._id%>Qnty" style="width: 60px;"/>
+                                                <button class="inc-btn p-1 text-danger border-1" onclick="incquantity('<%=items._id%>')" >+</button>
+                                              </div>
+                                            
+                                          
+                                    </td>
+                                    
+                                    <td class="cart__total" >$ <span id="<%=items._id%>TotalPrice"><%=items.productid.Price * items.quantity%></span></td>
+
+                                    <form action="/deleteFromCart/<%=items.productid._id%>" method="post">
+                                    <!-- <td class="cart__close"><span class="icon_close"></span></td> -->
+                                    <td><button class="btn btn-danger">Remove</button></td>
+                                    </form>
+                                    <% Subtotal = Subtotal + (items.productid.Price*items.quantity)%>
+                                </tr>
+                                <%})%>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="cart__btn">
+                        <a href="/shoppage">Continue Shopping</a>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="row">
+                  <div class="col-lg-6"> 
+                    <div class="discount__content">
+                        
+                    </div>
+                </div> 
+                <div class="col-lg-4 offset-lg-2">
+                    <div class="cart__total__procced">
+                        <h6>Cart total</h6>
+                        <ul>
+                            <li>Subtotal <span >$ <span id="cartsubTotal"><%=Subtotal%></span> </span></li>
+                            <!-- <%let Total=0%> -->
+                            <!-- <li>Total <span id="Total">$<%= Total+Subtotal%></span></li> -->
+                        </ul>
+                        <a href="/checkoutpage" class="primary-btn">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+  function incquantity(id) {
+    console.log(id+"ID");
+  let Quantity = Number($("#" + id + "Qnty").val());
+
+    $.ajax({
+      method: "POST",
+      url: "/incquantity",
+      data: {
+        id:id,
+      },
+      dataType: "json",
+      encode: true,
+    }).done(function (data) {
+      let price = Number($("#" + id + "Price").html());
+      console.log(price);
+      let currentTotal = Number($("#cartsubTotal").html());
+      $("#" + id + "Qnty").val(Quantity + 1);
+      let singletotal=$("#" + id + "TotalPrice").html(price * (Quantity + 1));
+      $("#cartsubTotal").html(currentTotal + price);
+      $("#Total").html(currentTotal + price);
+      if(data=='maximum'){
+        Swal.fire("Alert!", "Maximum limit is 12", "Please change");
+      }
+
+    });
+
+}
+
+function decquantity(id) {
+    console.log(id+"ID");
+  let Quantity = Number($("#" + id + "Qnty").val());
+
+    $.ajax({
+      method: "POST",
+      url: "/decquantity",
+      data: {
+        id:id,
+      },
+      dataType: "json",
+      encode: true,
+    }).done(function (data) {
+      cartCout();
+
+      let price = Number($("#" + id + "Price").html());
+      console.log(price);
+      let currentTotal = Number($("#cartsubTotal").html());
+      $("#" + id + "Qnty").val(Quantity - 1);
+      let singletotal=$("#" + id + "TotalPrice").html(price * (Quantity - 1));
+      $("#cartsubTotal").html(currentTotal - price);
+      $("#Total").html(currentTotal - price);
+      if(data=='deleted'){
+        // alert('DELETED')
+        
+      Swal.fire("removed!", "Your product has been removed.", "success");
+        
+        $("#ctproduct"+id).remove()
+
+      }
+     
+    });
+
+}
+
+
+// function orderid() {
+//   $.ajax({
+//     type: "POST",
+//     url: "/orderid",
+//     data: {},
+//     dataType: "json",
+//     encode: true,
+//   }).done(function (data) {
+//     if (data == "empty") {
+//       Swal.fire("Cart is empty");
+//     } else {
+//       location.href = "/checkout/" + data._id;
+//     }
+//   });
+// }
+ </script>   
+
+    <%-include('../user/layouts/user-footer.ejs') %>

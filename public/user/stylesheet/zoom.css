@@ -1,0 +1,21 @@
+
+figure.zoom {
+  /* background-position: 20% 20%; */
+  position: relative;
+  /* margin: 150px auto; */
+  border: 5px solid white;
+  box-shadow: -1px 5px 15px black;
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+figure.zoom img:hover {
+  opacity: 0;
+}
+figure.zoom img {
+  transition: opacity 0.5s;
+  display: block;
+  width: 100%;
+}
+  

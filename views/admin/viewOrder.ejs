@@ -1,0 +1,238 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+
+
+<main class="h-full pb-16 overflow-y-auto">
+    <!-- <div class="container grid px-6 mx-auto "> -->
+      
+
+      <!-- Order Table -->
+
+            <!-- <h4
+              class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300 mt-4"
+            >
+              Orders
+            </h4> -->
+           
+           
+           
+           
+            <div class="widget-content container mt-3">
+                <div class="row ">
+                  <div class="card-heading text-center">
+                    <h1>Order Details</h1>
+                  </div>
+                </div>
+                  <!-- <div id="message">
+                  </div> -->
+                  <div class="card  p-0 my-2 text-black">
+                    <div class="card-header">
+                      Bill Details
+                    </div>
+                    <div class="card-body ">
+                      <div class="d-flex flex-wrap ">
+                        <div class="col-12 col-lg-6">
+                          <table class="table table-striped  ">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  Payment Status
+                                </td>
+                                <td id="status">
+                                  status
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Payment method
+                                </td>
+                                <td>
+                                  method
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Payment id
+                                </td>
+                                <td>
+                                 paymntid
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Order id
+                                </td>
+                                <td>
+                                  ordid
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Coupon
+                                </td>
+                                <td>
+                                  couname<small>coupcode
+                                    </small>
+                                 
+                                  No_coupon
+                                  
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                          <table class="table table-striped ">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  Sub-total
+                                </td>
+                                <td>
+                                  <i class="bi bi-currency-rupee"></i>amnt
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Items
+                                </td>
+                                <td>
+                                  length
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Discount
+                                </td>
+                                <td>
+                                discnt
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Discount amount
+                                </td>
+                                <td><i class="bi bi-currency-rupee"></i>
+                                  discamnt
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Total
+                                </td>
+                                <td>
+                                  <b class="text-danger fw-bold"><i class="bi bi-currency-rupee"></i>totalamnt
+                                  </b>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-5 col-md-12">
+                    <div class="card card-default" style="border-color: white !important; color: black !important;">
+                      <div class="card border-0 ad-box-shadow p-0 ">
+                        <div class="card-header ">
+                          <div class="card p-3 bg-light border-primary col-12 ">
+                            <p>Name: &nbsp;<span class="fw-bold">
+                                adresname
+                              </span>
+                            </p>
+                            <p>House : &nbsp;<span class="fw-bold">
+                                house
+                              </span>
+                            </p>
+                            <p>Phone :&nbsp;<span class="fw-bold">
+                                phonenum
+                              </span>
+                            </p>
+                            <p>Pin :&nbsp;<span class="fw-bold">
+                                pin
+                              </span>
+                            </p>
+                            <p>City :&nbsp;<span class="fw-bold">
+                              city
+                              </span>
+                            </p>
+                            <p>District :&nbsp;<span class="fw-bold">
+                                distrct
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card bg-light mt-2 text-black   p-3">
+                      <form action="/delivarystatus" method="post">
+                        <fieldset>
+                          <legend>select delivery_status</legend>
+                          <label><input type="radio" name="Status" value="ordered" checked> 
+                            ordered </label><br />
+                          <label><input type="radio" name="Status" value="shipped"
+                                                 checked >
+                            shipped</label><br />
+                          <label><input type="radio" name="Status" value="out_for_delivery"  checked > out_for_delivery</label><br />
+                          <label><input type="radio" name="Status" value="delivered"  checked >
+                            delivered</label><br />
+                          <label><input type="hidden" name="id" value=""></label><br />
+                          
+                          <button type="submit">submit</button>
+                          
+                          <h5 class="text-danger text-danger">CANCELED</h5>
+                          
+                          <h5 class="text-warning text-center">ORDER RETURNED</h5>
+                          
+                          <div class="card bg-light mt-2 text-black p-3" id="Refund">
+                            <h5 class=" text-center mb-3">Refund Cash= <span class="text-danger fw-bold"><i class="bi bi-currency-rupee"></i></span></h5>
+                            <button type="button" class="bg-dark text-light" onclick="">Refund</button>
+                          </div>
+                          
+                          <h5 class="text-success text-center">ORDER COMPELETED</h5>
+                         
+                        </fieldset>
+                      </form>
+                    </div>
+                   
+                    <div class="card bg-light mt-2 text-black  text-center p-3" id="paymentbtn">
+                      <h5>Got Payment</h5>
+                      <button class="btn btn-outline-success" onclick="">Yes</button>
+                    </div>
+                  
+                  </div>
+                  <div class="col-xl-7 col-md-12 ">
+                    <div class="admincard card card-default" style="border-color: white !important;">
+                      <div class="card-body">
+                        
+                        <div class="card-body d-flex justify-content-between">
+            
+                          <div class="card p-4 bg-light col-3 mx-1">
+                            <img style="width: 100px; height: 100px;" src="" alt="">
+                          </div>
+                          <div class="card p-3 bg-light col-9 text-black d-flex align-items-around">
+                            <p>Name: &nbsp;<small class=" fw-bold">
+                               
+                              </small></p>
+                            <p>Price : &nbsp;<i class="bi bi-currency-rupee"></i>
+                            </p>
+                            <p>Quantity:&nbsp;
+                            </p>
+                            <p>Amount:&nbsp;<span class="fw-bold"><i class="bi bi-currency-rupee"></i>
+                               
+                              </span>
+                            </p>
+                          </div>
+                        </div>
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<!-- View Order page -->
+
+        </main>
+    </div>
+  </div>
+</body>
+</html>

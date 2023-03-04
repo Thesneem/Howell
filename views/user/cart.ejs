@@ -1,0 +1,212 @@
+<%-include('../user/layouts/user-header.ejs') %>
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Shopping cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+<% let subtotal=0; %>
+    <!-- Shop Cart Section Begin -->
+    <section class="shop-cart spad">
+        <div class="container">
+            <div class="row">
+
+                <% if (cart.cart.length == 0){%>
+                    <h3 class="text-dark text-center">Cart is empty</h3>
+                    
+                <% }else{ %>
+                <div class="col-lg-12">
+                    <div class="shop__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th class="pl-5">Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <%cart.cart.forEach(function(items) { %>
+                            <tbody>
+                                <tr>
+                                    <td class="cart__product__item">
+                                        <img src="/admin/images/<%=items.productid.image[0]%>" style="width:100px; height:100px" alt="">
+                                        <div class="cart__product__item__title">
+                                            <h6><%=items.productid.ProductName%></h6>
+                                            <div class="rating">
+                                               Brand:<%=items.productid.Brand%>
+                                            </div>
+                                            <!-- <div class="rating">
+                                                Size:<%=items.productid.Size%>
+                                             </div> -->
+                                        </div>
+                                    </td>
+                                    <td class="cart__price " id="<=%items.id%>Price">$ <%=items.productid.Price%></td>
+                                    
+                                    <!-- <td class="cart__quantity">
+                                        <div class="pro-qty">
+                                            <input type="text" value="1">
+                                        </div>
+                                       
+                                    </td> -->
+                                    <!-- <td>
+                                        <button class="mr-3">-</button><%=items.quantity%><button class="ml-3" onclick="changequantity('<%=items.productid._id%>',1)">+</button>
+                                    </td> -->
+                                    <!-- <td class="border-light">
+                                        <div class="d-flex align-items-center justify-content-between" >
+                                            <button id="decrement-button" onclick="quantitydec('<%=items.productid._id %>')">-</button>
+                                            <input class="w-50 text-center" type="text" id="quantity-input" value="1" min="0">
+                                            <button id="increment-button" onclick="quantityinc('<%=items.productid._id %>')">+</button>
+                                          </div> -->
+                                          <!-- <script>
+                                            const decrementButton = document.querySelector("#decrement-button");
+                                            const incrementButton = document.querySelector("#increment-button");
+                                            const quantityInput = document.querySelector("#quantity-input");
+                                        
+                                            decrementButton.addEventListener("click", function () {
+                                            let quantity = parseInt(quantityInput.value);
+                                            if (quantity > 1) {
+                                            quantity--;
+                                            }
+                                            quantityInput.value = quantity;
+                                            });
+                                        
+                                            incrementButton.addEventListener("click", function () {
+                                            let quantity = parseInt(quantityInput.value);
+                                            quantity++;
+                                            quantityInput.value = quantity;
+                                            });
+                                        
+                                        </script>   -->
+                                    <!-- </td> -->
+                                    <td>
+                                
+                                            
+                                                <!-- <span class="small text-uppercase text-gray headings-font-family">Quantity</span> -->
+                                              <div class="quantity d-flex align-items-center justify-content-between">
+                                                <button class="dec-btn p-2" >+</button>
+                                                <input class="inputnumber text-center form-control form-control-sm border-0 shadow-0 p-1" type="number" max="" value="<%=items.quantity%>" id="" />
+                                                <button class="inc-btn p-2" >-</button>
+                                              </div>
+                                            
+                                          
+                                    </td>
+                                    
+                                    <td class="cart__total pl-5">$<%=items.productid.Price * items.quantity%></td>
+
+                                    <form action="/deleteFromCart/<%=items.productid._id%>" method="post">
+                                    <!-- <td class="cart__close"><span class="icon_close"></span></td> -->
+                                    <td><button class="btn btn-danger">Remove</button></td>
+                                    </form>
+                                    <% subtotal = subtotal + (items.productid.Price*items.quantity)%>
+                                </tr>
+                                <%})%>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="cart__btn">
+                        <a href="/shoppage">Continue Shopping</a>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="cart__btn update__btn">
+                        <a href="#"><span class="icon_loading"></span> Update cart</a>
+                    </div>
+                </div> -->
+            </div>
+            <div class="row">
+                  <div class="col-lg-6"> 
+                    <div class="discount__content">
+                        <!-- <h6>Discount codes</h6>
+                        <form action="#">
+                            <input type="text" placeholder="Enter your coupon code">
+                            <button type="submit" class="site-btn">Apply</button>
+                        </form> -->
+                    </div>
+                </div> 
+                <div class="col-lg-4 offset-lg-2">
+                    <div class="cart__total__procced">
+                        <h6>Cart total</h6>
+                        <ul>
+                            <li>Subtotal <span>$<%=subtotal%> </span></li>
+                            <li>Total <span>$<%=subtotal%></span></li>
+                        </ul>
+                        <a href="/checkoutpage" class="primary-btn">Proceed to checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Cart Section End -->
+    <!-- <script>
+        function changequantity(prodid,count) {
+    $.ajax({
+        type: 'POST',
+        url: '/changequantity',
+        data: {
+            product: prodid,
+            count: count
+        },
+        dataType: 'json',
+        success: function(response) {
+            alert(response);
+            
+        },
+        error: function(xhr, status, error) {
+            console.error(`An error occurred while changing the quantityyy: ${error}`);
+        }
+    });
+}
+</script> -->
+
+<script>
+  async function quantityinc(id) {
+//   let Qnty = Number(document.querySelector(`#${id}Qnty`).value);
+
+//   if (Number(document.querySelector(`#${id}Qnty`).getAttribute("max")) > Qnty) {
+    const response = await fetch("/quantity", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ id })
+    });
+
+    const data = await response.json();
+
+    let price = Number(document.querySelector(`#${id}Price`).innerHTML);
+    let Qnty = Number(document.querySelector(`#${id}quantity`).value);
+    let currentTotal = Number(document.querySelector("#cartSubTotal").innerHTML);
+
+    document.querySelector(`#${id}Qnty`).value = Qnty + 1;
+    document.querySelector(`#${id}TotalPrice`).innerHTML = price * (Qnty + 1);
+    document.querySelector("#cartSubTotal").innerHTML = currentTotal + price;
+    document.querySelector("#Total").innerHTML = currentTotal + price;
+    cartCount();
+//   } 
+//   else {
+//     Swal.fire({
+//       text: "Sorry! Limited stock",
+//     });
+//   }
+ }
+
+ </script>   
+
+    <%-include('../user/layouts/user-footer.ejs') %>

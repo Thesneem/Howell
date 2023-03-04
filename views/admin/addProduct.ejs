@@ -1,0 +1,209 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+<main class="h-full pb-16 overflow-y-auto">
+          <div class="container px-6 mx-auto grid">
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+              Add Product
+            </h2>
+            
+            <!-- General elements -->
+           <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
+            <div
+              class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+            >
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Product Name</span>
+                <input type="string"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="ProductName"
+                  
+                />
+              </label>
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Description</span>
+                <input type="string"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="Description" 
+                />
+              </label>
+
+              <div class="form-group">
+              <label for="input-1">Category</label>
+            <select class="group input-group form-control" name="categoryName" id="">
+              <option value="" selected>Select product category</option>
+              <% category.forEach(function(category){ %>  
+              <option> <%= category.categoryName %>
+              </option>
+              <%})%>
+              </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="input-1">Brand</label>
+              <select class="group input-group form-control" name="Brand" id="">
+                <option value="" selected>Select product brand</option>
+                <% brand.forEach(function(brand){%>
+                <option><%= brand.brand%></option>
+                <%}) %>
+                </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="input-1">Status</label>
+                <select class="group input-group form-control" name="Status" id="">
+                  <option value="List" selected>List</option>
+                  <option value="Unlist">Unlist</option>
+                  
+                  </select>
+                  </div>
+                <!-- <div class="form-group">
+                  <label for="input-1">Size and Stock</label>
+                  <div> -->
+                  <!-- <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Small"  name="options[]"/>
+                      <label class="form-check-label" for="inlineCheckbox1">Small</label>
+                    </div>
+                    
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Medium" name="options[]" />
+                      <label class="form-check-label" for="inlineCheckbox2">Medium</label>
+                    </div>
+                    
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Large" name="options[]"/>
+                      <label class="form-check-label" for="inlineCheckbox3">Large</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="One Size" name="options[]"/>
+                      <label class="form-check-label" for="inlineCheckbox3">One Size</label>
+                    </div>
+                  </div>
+              </div> -->
+
+
+              <!-- <div style="display: flex;">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">Small</label>
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Small">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="inputPassword2" class="sr-only">Small Stock</label>
+                  <input type="number" min='0' class="form-control" id="inputPassword2" placeholder="Stock" required name="smallstock">
+                </div>
+              </div>
+              
+              <div style="display: flex;">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">Medium</label>
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Medium">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="inputPassword2" class="sr-only">Medium Stock</label>
+                  <input type="number" min='0' class="form-control" id="inputPassword2" placeholder="Stock" required name="mediumstock">
+                </div>
+              </div>
+
+              <div style="display: flex;">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">Large</label>
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Large">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="inputPassword2" class="sr-only">Large Stock</label>
+                  <input type="number" min='0' class="form-control" id="inputPassword2" placeholder="Stock" required name="largestock">
+                </div>
+              </div>
+              <div style="display: flex;">
+                <div class="form-group mb-2">
+                  <label for="staticEmail2" class="sr-only">One Size</label>
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="One Size">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                  <label for="inputPassword2" class="sr-only">OneSize Stock</label>
+                  <input type="number" min='0' class="form-control" id="inputPassword2" placeholder="Stock" required name="onesizestock">
+                </div>
+              </div> -->
+             
+
+                <label class="block text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Specifications</span>
+                    <input type="string"
+                      class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                      name="Specifications" 
+                    />
+                  </label>
+
+                  <label class="block text-sm"> 
+                    <span class="text-gray-700 dark:text-gray-400">Stock</span>
+                    <input type="tel"
+                      class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                      name="Stock"
+                      
+                    />
+                  </label>
+
+                  <label class="block text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Price</span>
+                    <input type="tel"
+                      class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                      name="Price"
+                      
+                    />
+                  </label>
+                  <!-- <label class="block text-sm">
+                    <span class="text-gray-700 dark:text-gray-400">Discount</span>
+                    <input type="tel"
+                      class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                      name="Discount"
+                      
+                    />
+                  </label> -->
+            <!-- Image input field -->
+
+            <div class="form-group">
+              <label for="input-5">Product Images</label>
+              <input type="file" accept="image/png,image/jpeg" class="form-control" id="pro-img" name="image" required
+                  placeholder="Choose images" multiple/>
+          </div>
+          <div class="previewImages d-flex mb-2"></div>
+
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-success px-5"> Submit</button>
+          </div>
+
+        </div>
+        </form>
+          
+        </main>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function(){
+      let imgPreview = function(input, imagePlace){
+        if(input.files){
+          let allFiles = input.files.length;
+          for(i=0; i<allFiles; i++){
+            let reader = new FileReader();
+            reader.onload = function(event){
+              $($.parseHTML("<img>")).attr({
+                "src": event.target.result,
+                "width": "200", // set the width of the image
+                "height": "200" // set the height of the image
+              }).appendTo(imagePlace);
+            };
+            reader.readAsDataURL(input.files[i]);
+          }
+        }
+      };
+      $("#pro-img").on("change", function(){
+        imgPreview(this, "div.previewImages");
+      });
+    });
+    
+        </script>
+  </body>
+</html>

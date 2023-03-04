@@ -1,0 +1,152 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+  <main class="h-full pb-16 overflow-y-auto">
+    <div class="container px-6 mx-auto grid">
+      <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <!-- ProductName as heading -->
+        <%=product.ProductName%>
+      </h2>
+
+      <!-- General elements -->
+      <form action="/admin/editProduct/<%=product._id %>" method="post" enctype="multipart/form-data">
+        <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Product Name</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="ProductName" value="<%= product.ProductName%>"  />
+          </label>
+
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Description</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="Description" value="<%=product.Description%>"  />
+          </label>
+
+          <div class="form-group">
+            <label for="input-1">Category</label>
+            <select class="group input-group form-control" name="categoryName" id="">
+              <option value="<%=product.categoryName%>" selected>
+                <%=product.categoryName%>
+              </option>
+              <% category.forEach(function(category){%>
+                <% if (category.categoryName != product.categoryName){%>
+                <option> <%= category.categoryName %></option>
+                <%}%>
+                <%}) %>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="input-1">Brand</label>
+            <select class="group input-group form-control" name="Brand" id="">
+              <option value="<%=product.Brand%>" selected>
+                <%=product.Brand%>
+              </option>
+              <% brand.forEach(function(brand){%>
+                <% if (brand.brand != product.Brand){%>
+                <option><%= brand.brand%></option>
+                <%}%>
+                <%}) %>
+            </select>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="input-1">Size</label>
+            <div> -->
+
+    
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Specifications</span>
+              <input type="string"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Specifications" value="<%=product.Specifications%>" />
+            </label>
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Stock</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Stock" value="<%=product.Stock%>" />
+            </label>
+            
+            <div class="form-group">
+              <label for="input-1">Status</label>
+            <select class="group input-group form-control" name="Status" id="">
+              <option value="List" selected>List</option>
+              <option value="Unlist">Unlist</option>
+              
+              </select>
+              </div>
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Price</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Price" value="<%=product.Price%>" />
+            </label>
+            <!-- <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Discount</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Discount" value="<%=product.Discount%>" />
+            </label> -->
+            <!-- Image input field -->
+            <!-- <div class="form-group row">
+              <img src="/admin/images/<%= product.image[0] %>" alt="" style="width: 180px ; height: 180px ;">
+          </div> -->
+
+
+            <div class="form-group row">
+              <% for(let i=0; i < product.image.length; i++) { %>
+                <img src="/admin/images/<%= product.image[i] %>" alt="" style="width: 180px ; height: 180px ;">
+                <% } %>
+            </div>
+
+            <div class="form-group">
+              <label for="input-5">Product Images</label>
+              <input type="file" accept="image/png,image/jpeg" class="form-control" id="pro-img" name="image" 
+                  placeholder="Choose images" multiple/>
+          </div>
+
+          <div class="previewImages d-flex mb-2"></div>
+
+            <div class="form-group">
+              <!-- <a href='/admin/listProducts' class="btn btn-success px-5"> Update Product</a> -->
+              <button type="submit" class="btn btn-success mr-2">Submit</button>
+            </div>
+
+        </div>
+      </form>
+
+  </main>
+  </div>
+  </div>
+  <script>
+    $(document).ready(function(){
+    let imgPreview = function(input, imagePlace){
+      if(input.files){
+        let allFiles = input.files.length;
+        for(i=0; i<allFiles; i++){
+          let reader = new FileReader();
+          reader.onload = function(event){
+            $($.parseHTML("<img>")).attr({
+              "src": event.target.result,
+              "width": "200", // set the width of the image
+              "height": "200" // set the height of the image
+            }).appendTo(imagePlace);
+          };
+          reader.readAsDataURL(input.files[i]);
+        }
+      }
+    };
+    $("#pro-img").on("change", function(){
+      imgPreview(this, "div.previewImages");
+    });
+  });
+  
+      </script>
+  </body>
+
+  </html>

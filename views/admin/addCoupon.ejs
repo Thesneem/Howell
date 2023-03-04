@@ -1,0 +1,75 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+<main class="h-full pb-16 overflow-y-auto">
+          <div class="container px-6 mx-auto grid">
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+              Add Coupon
+            </h2>
+            <% if (message) { %>
+              <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+                <strong><%= message.message %> </strong>
+              </div> 
+              <% } %>
+            
+            <!-- General elements -->
+           <form action="/admin/addCoupon" method="post">
+            <div
+              class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800"
+            >
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Coupon Name</span>
+                <input type="string"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="couponName" required
+                  
+                />
+              </label>
+
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Coupon Code</span>
+                <input type="string"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="couponCode" required
+                  
+                />
+              </label>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Min Amount</span>
+                <input type="Number"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="minAmount" required
+                  
+                />
+                <label class="block text-sm">
+                  <span class="text-gray-700 dark:text-gray-400">Discount</span>
+                  <input type="Number"
+                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                    name="discount" required
+                    
+                  />
+              </label>
+              <label class="block text-sm">
+                <span class="text-gray-700 dark:text-gray-400">Expiry Date</span>
+                <input type="Date"
+                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  name="expiryDate" required
+                  
+                />
+              </label>
+
+          
+
+          <div class="form-group">
+              <button type="submit" class="btn btn-success px-5"> Submit</button>
+          </div>
+
+        </div>
+        </form>
+          
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

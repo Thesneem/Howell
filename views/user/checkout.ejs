@@ -1,0 +1,397 @@
+<%-include('../user/layouts/user-header.ejs') %>
+
+ <!-- Breadcrumb Begin -->
+ <div class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__links">
+                    <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                    <span>Checkout</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+<!-- <p class="d-flex justify-content-center">
+    <a
+      class="genric-btn success radius"
+      data-toggle="collapse"
+      href="#collapseExample1"
+      role="button"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      Create newDelivery Address
+    </a>
+  </p>
+  <hr />
+  <div class="collapse" id="collapseExample1">
+    <div class="card card-body">
+      <form action="/checkoutNewAddress" method="post">
+        <div class="col-md-12">
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom3">Full name</label>
+                  <input
+                    type="text"
+                    name="fullName"
+                    class="form-control"
+                    id="validationCustom3"
+                    value=""
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <label for="address-wpalaceholder">Address</label>
+                <input
+                  type="text"
+                  id="address-wpalaceholder"
+                  name="address"
+                  class="form-control"
+                  value=""
+                />
+              </div>
+              <div class="form-group mb-3">
+                <label for="address-wpalaceholder"
+                  >Phone Number</label
+                >
+                <input
+                  type="number"
+                  id="address-wpalaceholder"
+                  name="phone"
+                  class="form-control"
+                  value=""
+                />
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="validationCustom33">City</label>
+                  <input
+                    type="text"
+                    name="city"
+                    class="form-control"
+                    id="validationCustom33"
+                    value=""
+                    required
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="validationSelect2">State</label>
+                  <input
+                    class="form-control"
+                    name="state"
+                    id="custom-zip"
+                    autocomplete="off"
+                    maxlength="9"
+                    value=""
+                    required
+                  />
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="custom-zip">pin code</label>
+                  <input
+                    class="form-control input-zip"
+                    name="pincode"
+                    id="custom-zip"
+                    autocomplete="off"
+                    maxlength="9"
+                    value=""
+                    required
+                  />
+                </div>
+              </div>
+
+              <button class="btn primary-btn" type="submit">
+                Submit form
+              </button>
+            </div>
+            <!-- /.card-body -->
+          <!-- </div> -->
+          <!-- /.card -->
+        <!-- </div> -->
+        <!-- /.col -->
+      <!-- </form> -->
+    <!-- </div>
+  </div>  -->
+
+
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-lg-12">
+                <h6 class="coupon__link"><span class="icon_tag_alt"></span> <a href="#">Have a coupon?</a> Click
+                here to enter your code.</h6>
+                
+
+            </div>
+        </div> -->
+        <div class="row">
+            <!-- <section class="checkout_area section_gap">
+                <div class="container"> -->
+                  <p>
+                    <a
+                      class="genric-btn primary radius"
+                      data-toggle="collapse"
+                      href="#collapseExample"
+                      role="button"
+                      aria-expanded="false"
+                      aria-controls="collapseExample"
+                    >
+                      Select delivery Address
+                    </a>
+                  </p>
+                  <div class="collapse " class="col-sm-6 mb-3"id="collapseExample">
+                    <!-- <div class="card card-body" >
+                      <form action="/changeAddress" method="post">
+                        <option value="select">Address Here</option>
+                        <select name="addressIndex" id="addressIndex">
+                          
+                          <option value="">
+                            
+                          </option>
+                          <br />
+                          
+                        </select>
+                        <input class="btn-info" type="submit" value="submit" />
+                      </form>
+                    </div> -->
+                    <div class="card p-3 bg-light my-2" id="">
+                        <div class="d-flex justify-content-between">
+                          <h6>Address 
+                          </h6>
+                          <a class="text-danger text-lg-end text-decoration-none" onclick="" href="#">
+                            Delete
+                          </a>
+                        </div>
+                        <div class="col-md-6">
+                          <p id="p"><b>
+                              Name<br>
+                            </b>
+                            address</p>
+                        </div>
+                        <a class="text-success text-lg-end text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#"><small><i class="bi bi-pencil-square"></i>
+                            Edit</small>
+                        </a>
+                      </div>
+                </div>
+                  
+
+        </div>
+        <form action="#" class="checkout__form">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="d-flex justify-content-center">
+                        <a
+                          class="genric-btn success radius"
+                          data-toggle="collapse"
+                          href="#collapseExample1"
+                          role="button"
+                          aria-expanded="false"
+                          aria-controls="collapseExample"
+                        >
+                          Create newDelivery Address
+                        </a>
+                      </p>
+                      <hr />
+                    <div class="row">
+
+                        <div class="collapse" id="collapseExample1">
+                            <div class="card card-body">
+                              <form action="/checkoutNewAddress" method="post">
+                                <div class="col-md-12">
+                                  <div class="card shadow mb-4">
+                                    <div class="card-body">
+                                      <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                          <label for="validationCustom3">Full name</label>
+                                          <input
+                                            type="text"
+                                            name="fullName"
+                                            class="form-control"
+                                            id="validationCustom3"
+                                            value=""
+                                            required
+                                          />
+                                        </div>
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="address-wpalaceholder">Address</label>
+                                        <input
+                                          type="text"
+                                          id="address-wpalaceholder"
+                                          name="address"
+                                          class="form-control"
+                                          value=""
+                                        />
+                                      </div>
+                                      <div class="form-group mb-3">
+                                        <label for="address-wpalaceholder"
+                                          >Phone Number</label
+                                        >
+                                        <input
+                                          type="number"
+                                          id="address-wpalaceholder"
+                                          name="phone"
+                                          class="form-control"
+                                          value=""
+                                        />
+                                      </div>
+                                      <div class="form-row">
+                                        <div class="col-md-6 mb-3">
+                                          <label for="validationCustom33">City</label>
+                                          <input
+                                            type="text"
+                                            name="city"
+                                            class="form-control"
+                                            id="validationCustom33"
+                                            value=""
+                                            required
+                                          />
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                          <label for="validationSelect2">State</label>
+                                          <input
+                                            class="form-control"
+                                            name="state"
+                                            id="custom-zip"
+                                            autocomplete="off"
+                                            maxlength="9"
+                                            value=""
+                                            required
+                                          />
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                          <label for="custom-zip">pin code</label>
+                                          <input
+                                            class="form-control input-zip"
+                                            name="pincode"
+                                            id="custom-zip"
+                                            autocomplete="off"
+                                            maxlength="9"
+                                            value=""
+                                            required
+                                          />
+                                        </div>
+                                      </div>
+                        
+                                      <!-- <button class="btn primary-btn" type="submit">
+                                        Submit form
+                                      </button> -->
+                                    </div>
+                                    <!-- /.card-body -->
+                                  </div>
+                                  <!-- /.card -->
+                                </div>
+                                <!-- /.col -->
+                              </form>
+                            </div>
+                          </div>
+                        
+                        <!-- <div class="col-lg-12">
+                            <div class="checkout__form__input">
+                                <p>Name <span>*</span></p>
+                                <input type="text" required name="fullName">
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>House <span>*</span></p>
+                                <input type="text" required name="House">
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>City<span>*</span></p>
+                                <input type="text" required name="city">
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>District<span>*</span></p>
+                                <input type="text" required name="district">
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>State<span>*</span></p>
+                                <input type="text" required name="state">
+                            </div>
+                            <div class="checkout__form__input">
+                                <p>PIN<span>*</span></p>
+                                <input type="number" required name="Pin">
+                            </div>
+                            
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="checkout__order">
+                            <h5>Your order</h5>
+                            <div class="checkout__order__product">
+                                <ul>
+                                    <li>
+                                        <span class="top__text">Product</span>
+                                        <span class="top__text__right">Total</span>
+                                    </li>
+                                    <li>01. Chain buck bag <span>$ 300.0</span></li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="checkout__order__total">
+                                <ul>
+                                    <li>Subtotal <span>$ 750.0</span></li>
+                                    <li>Total <span>$ 750.0</span></li>
+                                </ul>
+                            </div>
+                            <div class="checkout__order__widget">
+                                <!-- <label for="o-acc">
+                                    Create an acount?
+                                    <input type="checkbox" id="o-acc">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <p>Create am acount by entering the information below. If you are a returing customer
+                                login at the top of the page.</p> -->
+                                <label for="check-payment">
+                                    Cash on delivery
+                                    <input type="checkbox" id="check-payment" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label for="paypal">
+                                    PayPal
+                                    <input type="checkbox" id="paypal">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <button type="submit" class="site-btn">Place oder</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+    <script>
+        function addaddress() {
+                document.getElementById("actionmodel").reset();
+                document.getElementById("actionmodel").setAttribute('action', '/add-order-address')
+            }
+
+
+
+            $(document).ready(function () {
+                var currentValue = localStorage.getItem('newTotal');
+                $('#total').val(currentValue)
+            })
+
+const paymentOptions = document.querySelectorAll('input[type="checkbox"]');
+paymentOptions.forEach(option => {
+  option.addEventListener('click', function() {
+    paymentOptions.forEach(otherOption => {
+      if (otherOption !== this) {
+        otherOption.checked = false;
+      }
+    });
+  });
+});
+
+    </script>
+
+    <%-include('../user/layouts/user-footer.ejs') %>

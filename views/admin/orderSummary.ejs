@@ -1,0 +1,198 @@
+
+
+<%-include('../admin/layouts/admin-header.ejs') %>
+
+      
+    <div class="container my-1">
+      <div class="row">
+<!-- Invoice Button -->
+<div class=" d-flex justify-content-end my-auto ml-3">
+  <a href="/admin/invoice/<%=orderdata._id%>" class="btn btn-success">Invoice</a>
+</div>
+
+<!-- Invoice button end -->
+
+        <div class="col-md-12" style="margin-top: 10px;">
+            <div class="card shadow">
+                <div class="card-header font-weight-bold font">
+                    <h3>View Order</h3>
+                    <h6 class="font-semibold font-medium">OrderID:<%=orderdata._id%></h6>
+                </div>
+                <div id="message">
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="font-bold">Shipping Details</h4>
+                            <hr>
+                            <label class="mt-2"> Name</label>
+                            <div class="border p-1 "><%= orderdata.userid.fullName %></div>
+                            
+                            <label class="mt-2">Email</label>
+                            <div class="border p-1"><%= orderdata.userid.email %></div>
+                            <label class="mt-2">Phone Number</label>
+                            <div class="border p-1"><%= orderdata.userid.phoneNumber %></div>
+                            <label class="mt-2" >Delivery Address</label>
+                            <div class="border p-1"><%= orderdata.address.addressName %><br>
+                            <%= orderdata.address.House %><br>
+                            <%= orderdata.address.city %><br>
+                            <%= orderdata.address.district %><br>
+                            <%= orderdata.address.state %><br>
+                                Pin Code : <%= orderdata.address.Pin %><br>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <h4 class="font-bold">Order Details</h4>
+                            <table class="table table-borderless ">
+                                <thead class="text-muted">
+                                  <tr class="small text-uppercase">
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">Total</th>
+
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <% orderdata.products.forEach(function(product){%>  
+                                  <tr>
+                                    <td>
+                                      <figure class="itemside align-items-center">
+                                        <div class="how-itemcart1">
+                                          <img src="/admin/images/<%= product.product_id.image[0] %>" style="height:100px;" alt="IMG" />
+                                        </div>
+                                        <figcaption class="info">
+                                          <a href="#" class="title text-dark"><%= product.product_id.ProductName%></a>
+                                          <p class="text-muted small">
+                                            
+                                          </p>
+                                        </figcaption>
+                                      </figure>
+                                    </td>
+                                    <td class="column">
+                                      <label class="my-3" for=""><%= product.qnty%></label>
+                                    </td>
+                                    <td>
+                                      <div class="price-wrap">
+                                        <var class="price"><span>$</span><%=product.product_id.Price%></var><br>
+                                        <small class="text-muted"><span>$</span> each </small>
+                                      </div>
+                                      <!-- price-wrap .// --><% let total=0; %>
+                                    </td>
+                                    <td><span>$</span><%= product.qnty* product.product_id.Price%></td>
+                                    <% total=total+(product.qnty* product.product_id.Price)%>
+                                  </tr>
+                                  <%})%>
+                                </tbody>
+                              </table>
+                              <hr>
+                              <div>
+                               
+                              <!-- <h5 class="d-flex align-end font-semibold">Total :<span>$</span> </h5><br> -->
+                              <% if (orderdata.coupon.name != 'nil'){%>
+                              <h6>Coupon Code :<%=orderdata.coupon.code%> </h6> <br>
+                              <h6>Coupon Discount :<span>$</span><%=orderdata.coupon.discount%></h6> <br>
+                              <h6 class="font-semibold">Grand Total : <span>$</span><%=(Math.round((orderdata.bill_amount*orderdata.coupon.discount)/100))
+                                %></h6> <br>
+                                <%} else {%>
+                                  <h6>Coupon: No Coupon added</h6> <br>
+                                  <h6 class="font-semibold">Grand Total : <span>$</span><%= orderdata.bill_amount%></h6> <br>
+                                    <%}%>
+                              <h6>Payment Mode :<%= orderdata.paymentData.payment_method%> </h6> <br>
+                              <!-- <h6>Payment ID : <%= orderdata.paymentData.payment_order_id%></h6> <br>
+                              
+                              <h6 id="status">Payment Status : <%=orderdata.paymentData.payment_status%> </h6> <br>  -->
+                             
+                              <!-- <h6>Order Status: <span class="text-danger">canceled</span></h6> <br>
+                              
+                              <h6>Order Status: <span class="text-warning">pendng</span></h6> <br>
+                              
+                              <h6>Order Status: <span class="text-success"></span></h6> <br>
+                              
+                              <h6>Tracking Number :</h6><br>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                              
+                              <a href=""><button
+                                class="btn btn-danger">Cancel Order</button></a> -->
+                                <form action="/admin/deliverystatus" method="post">
+                                  <fieldset>
+                                    <h1 class="font-bold text-dark">Select Delivery Status</h1>
+                                    <label><input type="radio" name="Status" value="ordered" <%
+                                                              if(orderdata.delivery_status.ordered.state==true){ %> checked <% } %>>
+                                      ordered</label><br />
+                                    <label><input type="radio" name="Status" value="shipped" <%
+                                                              if(orderdata.delivery_status.shipped.state==true){ %> checked <% } %>>
+                                      shipped</label><br />
+                                    <label><input type="radio" name="Status" value="out_for_delivery" <%
+                                                              if(orderdata.delivery_status.out_for_delivery.state==true){ %> checked <% } %>>
+                                     out_for_delivery</label><br />
+                                    <label><input type="radio" name="Status" value="delivered" <%
+                                                              if(orderdata.delivery_status.delivered.state==true){ %> checked <% } %>>
+                                      delivered</label><br />
+                                    <label><input type="hidden" name="id" value="<%= orderdata._id%>"></label><br />
+                                    <% if(!orderdata.delivery_status.delivered.state==true && !orderdata.delivery_status.canceled.state==true){ %>
+                                    <button type="submit" class="btn-danger btn-lg">Submit</button>
+                                    <% }else if(orderdata.delivery_status.canceled.state==true){ %>
+                                    <h5 class="text-danger text-danger">CANCELED</h5>
+                                    <% }else if(orderdata.delivery_status.returned.state==true){ %>
+                                    <h5 class="text-warning text-center">ORDER RETURNED</h5>
+                                    <% if(orderdata.payment.payment_status!=="refund completed"){ %>
+                                    <div class="card bg-light mt-2 text-black p-3" id="Refund">
+                                      <h5 class=" text-center mb-3">Refund Cash= <span class="text-danger fw-bold"><i class="bi bi-currency-rupee"></i>refundamnt</span></h5>
+                                      <button type="button" class="bg-dark text-light" onclick="refundcash('<%= orderdata._id%>')">Refund</button>
+                                    </div>
+                                    <% } %>
+                                    <% }else if(orderdata.delivery_status.delivered.state==true){ %>
+                                    <h5 class="text-success text-center">ORDER COMPELETED</h5>
+                                    <% } %>
+                                  </fieldset>
+                                </form>
+                                <!-- <% if(orderdata.paymentData.payment_status=='pending' && orderdata.paymentData.payment_method=='Cash_on_Delivery' && orderdata.delivery_status.canceled.state==false ){ %>
+                                  <div class="card bg-light mt-2 text-black  text-center p-3" id="paymentbtn">
+                                    <h5>Got Payment</h5>
+                                    <button class="btn btn-outline-success" onclick="paymentpending('<%= orderdata._id %>')">Yes</button>
+                                  </div>
+                                  <% } %> -->
+                        
+                           
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+</main>
+</body>
+</html>
+
+ <script>
+  function paymentpending(id) {
+    console.log("hellllo");
+    $.ajax({
+      type: "Post",
+      url: "/paymentpending",
+      data: {
+        id
+      },
+      dataType: "json",
+      encode: true,
+    }).done(function(data) {
+      if (data == 'completed') {
+        $('#status').html('completed')
+        $('#paymentbtn').remove()
+        resHTML = '<div class="alert alert-success alert-dismissible"> ' +
+          '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>' +
+          '<strong>Success</strong>Payment updated'
+        '</div>';
+      }
+      $('#message').html(resHTML)
+    });
+  }
+  </script>
+ 
+
+
+ 

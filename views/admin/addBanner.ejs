@@ -1,0 +1,88 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+  <main class="h-full pb-16 overflow-y-auto">
+    <div class="container px-6 mx-auto grid">
+      <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        Add Banner
+      </h2>
+      <% if (message) { %>
+        <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+          <strong><%= message.message %> </strong>
+        </div> 
+        <% } %>
+
+      <!-- General elements -->
+      <form action="/admin/addBanner" method="post" enctype="multipart/form-data">
+        <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Banner Name</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="bannerName" required />
+          </label>
+
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Description</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="description" required />
+          </label>
+
+          <!-- <label class="block text-sm mb-2" >
+                <span class="text-gray-700 dark:text-gray-400">Status</span>
+              
+                <select  class="mb-2 border">
+                  <option name="status" value="Active">Active</option>
+                  <option name="status" value="Inactive">Inactive</option></select>
+              </label> -->
+          <p>Banner Status</p>
+          <input type="radio" id="status" name="status" value="Active">
+          <label for="html">Active</label><br>
+          <input type="radio" id="status" name="status" value="Inactive">
+          <label for="css">Inactive</label><br>
+
+
+          <div class="form-group">
+            <label for="input-5">Banner Image</label>
+            <input type="file" accept="image/png,image/jpeg" class="form-control" id="ban-img" name="image" required
+              placeholder="Choose an image" />
+          </div>
+          <div class="previewImages mb-2"></div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-success px-5"> Submit</button>
+          </div>
+
+        </div>
+      </form>
+
+  </main>
+</div>
+</div>
+<script>
+  $(document).ready(function(){
+  let imgPreview = function(input, imagePlace){
+    if(input.files){
+      let allFiles = input.files.length;
+      for(i=0; i<allFiles; i++){
+        let reader = new FileReader();
+        reader.onload = function(event){
+          $($.parseHTML("<img>")).attr({
+            "src": event.target.result,
+            "width": "200", // set the width of the image
+            "height": "200" // set the height of the image
+          }).appendTo(imagePlace);
+        };
+        reader.readAsDataURL(input.files[i]);
+      }
+    }
+  };
+  $("#ban-img").on("change", function(){
+    imgPreview(this, "div.previewImages");
+  });
+});
+
+    </script>
+</body>
+
+</html>

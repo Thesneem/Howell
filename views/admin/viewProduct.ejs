@@ -1,0 +1,104 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+  <main class="h-full pb-16 overflow-y-auto">
+    <div class="container px-6 mx-auto grid">
+      <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+        <!-- ProductName as heading -->
+        <%=product.ProductName%>
+      </h2>
+
+      <!-- General elements -->
+      <form>
+        <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Product Name</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="ProductName" value="<%= product.ProductName%>" readonly />
+          </label>
+
+          <label class="block text-sm">
+            <span class="text-gray-700 dark:text-gray-400">Description</span>
+            <input type="string"
+              class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+              name="Description" value="<%=product.Description%>" readonly />
+          </label>
+
+          <div class="form-group">
+            <label for="input-1">Category</label>
+            <select class="group input-group form-control" name="categoryName" id="">
+              <option value="<%=product.categoryName%>" selected>
+                <%=product.categoryName%>
+              </option>
+              <option> </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="input-1">Brand</label>
+            <select class="group input-group form-control" name="Brand" id="">
+              <option value="<%=product.Brand%>" selected>
+                <%=product.Brand%>
+              </option>
+              <option></option>
+            </select>
+          </div>
+
+          <!-- <div class="form-group">
+            <label for="input-1">Size</label>
+            <div> -->
+
+             
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Specifications</span>
+              <input type="string"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Specifications" value="<%=product.Specifications%>" readonly/>
+            </label>
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Stock</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Stock" value="<%=product.Stock%>" />
+            </label>
+
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Price</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Price" value="<%=product.Price%>" readonly />
+            </label>
+            <label class="block text-sm">
+              <span class="text-gray-700 dark:text-gray-400">Discount</span>
+              <input type="tel"
+                class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                name="Discount" value="<%=product.Discount%>" readonly />
+            </label>
+            <!-- Image input field -->
+            <!-- <div class="form-group row">
+              <img src="/admin/images/<%= product.image[0] %>" alt="" style="width: 180px ; height: 180px ;">
+          </div> -->
+
+
+            <div class="form-group row">
+              <% for(let i=0; i < product.image.length; i++) { %>
+                <img src="/admin/images/<%= product.image[i] %>" alt="" style="width: 180px ; height: 180px ;">
+                <% } %>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <a href='/admin/listProducts' class="btn btn-success px-5"> Go back to All Products</a>
+            </div>
+
+        </div>
+      </form>
+
+  </main>
+  </div>
+  </div>
+  </body>
+
+  </html>

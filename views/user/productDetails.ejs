@@ -1,0 +1,395 @@
+  
+    <%-include('../user/layouts/user-header.ejs') %>
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="/"><i class="fa fa-home"></i> Home</a>
+                        <a href="/shoppage">Shop </a>
+                        <span><%=product.ProductName%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+  <!-- Product Details Section Begin -->
+  <section class="product-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product__details__pic">
+                    <div class="product__details__pic__left product__thumb nice-scroll">
+                        <% for(let i = 0; i < product.image.length; i++) { %>
+                            
+                            <a class="pt active" href="#product-1">
+                                <img src="/admin/images/<%=product.image[i]%>" /></figure> 
+                    </a>
+                    <% } %>
+                    <!-- <a class="pt" href="#product-2">
+                        <img src="/admin/images/<%=product.image[1]%>" alt="">
+                    </a>
+                    <a class="pt" href="#product-3">
+                        <img src="user/images/product/details/thum3.jpg" alt="">
+                    </a>
+                    <a class="pt" href="#product-4">
+                        <img src="user/images/product/details/thum4.jpg" alt="">
+                    </a> -->
+                </div>
+                <div class="product__details__slider__content">
+                    <div class="product__details__pic__slider owl-carousel">
+                        <% for(let i = 0; i < product.image.length; i++) { %>
+                            <figure class="zoom" onmousemove="zoom(event)" style="background-image: url(/admin/images/<%=product.image[i]%>)">
+
+                        <img data-hash="product-1" class="product__big__img" src="/admin/images/<%=product.image[i]%>" alt="">
+                            </figure>
+                        <!-- <img data-hash="product-2" class="product__big__img" src="/admin/images/<%=product.image[1]%>" alt="">
+                        <img data-hash="product-3" class="product__big__img" src="/admin/images/<%=product.image[2]%>" alt="">
+                        <img data-hash="product-4" class="product__big__img" src="/admin/images/<%=product.image[3]%>" alt=""> -->
+                        <% } %>
+                    </div>
+                    </div>
+                   
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product__details__text">
+                    <h3><%=product.ProductName%> <span>Brand: <%=product.Brand%></span></h3>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <!-- <span>( 138 reviews )</span> -->
+                    </div>
+                    <div class="product__details__price">₹<%=product.Price%> </div>
+                    <p><%=product.Description%></p>
+                    <div class="product__details__button">
+                        <!-- <div class="quantity">
+                            <span>Quantity:</span>
+                            <div class="pro-qty">
+                                <input type="text" value="1">
+                            </div>
+                        </div> -->
+                        <!-- <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a> -->
+                        <!-- <form action="/addToCart/<%= product._id%>" method="post"> -->
+                        <button type="submit" class="btn btn-primary btn-lg mb-2" onclick="addtocart('<%=product._id %>')" >Add to Cart</button>
+                        <!-- </form> -->
+                        <!-- <form action="/addToWishlist/<%= product._id%>" method="post"> -->
+                        <button type="submit" class="btn btn-secondary btn-lg" onclick="wishlist('<%=product._id %>')">Wishlist</button>
+                        <!-- </form> -->
+                        <!-- <ul>
+                            <li>
+                                <form action="/addToWishlist/<%= product._id %> " method="post">
+
+                                <a href="">
+
+                                <span class="icon_heart_alt"></span>
+                            
+                                </a>
+                                </form>
+                            </li> -->
+                            <!-- <div class="form-group">
+                                <a href="/admin/addProduct"> <button type="submit" class="btn btn-success px-5"> Add Product</button></a>
+                             </div> -->
+                            <!-- <li><a href="#"><span class="icon_adjust-horiz"></span></a></li> -->
+                        <!-- </ul> -->
+                        <!-- <form action="/addToWishlist/<%= product._id %> " method="post">
+                            <button type="submit" class="btn btn-primary btn-outline btn-lg" style="width: 200px;"> Add to WishList</button>
+                        </form> -->
+                    </div>
+                    <div class="product__details__widget">
+                        <ul>
+                            <li>
+                                <span>Availability:</span>
+                                <div class="stock__checkbox">
+                                    <!-- <label for="stockin"> -->
+                                        <%=product.Status%>
+                                        <!-- <input type="checkbox" id="stockin" checked> -->
+                                        <!-- <span class="checkmark"></span> -->
+                                    <!-- </label> -->
+                                </div>
+                            </li>
+                           
+                            <li>
+                                <span>Promotions:</span>
+                                <p>Free shipping</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="product__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
+                        </li> -->
+                        <li class="nav-item">
+                            <!-- <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> -->
+                                Specifications
+                            <!-- </a> -->
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Reviews</a>
+                        </li> -->
+                    </ul>
+                    <div class="tab-content">
+                        <!-- <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <h6>Description</h6>
+                            <p>All time favourite Bag</p>
+                            <p></p>
+                        </div> -->
+                        <!-- <div class="tab-pane" id="tabs-2" role="tabpanel"> -->
+                            <h6>Specifications</h6>
+                            <p><%=product.Specifications%></p>
+                            <p></p>
+                        </div>
+                        <!-- <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            <h6>Reviews</h6>
+                            <p>Nice Product<p>
+                            <p></p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="related__title">
+                    <h5>RELATED PRODUCTS</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="user/images/product/related/related1.jpg">
+                        <div class="label new">New</div>
+                        <ul class="product__hover">
+                            <li><a href="user/images/product/related/related1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Buttons tweed blazer</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="user/images/product/related/related2.jpg">
+                        <ul class="product__hover">
+                            <li><a href="user/images/product/related/related2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Flowy striped skirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 49.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="user/images/product/related/related3.jpg">
+                        <div class="label stockout">out of stock</div>
+                        <ul class="product__hover">
+                            <li><a href="user/images/product/related/related3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Cotton T-Shirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="product__item">
+                    <div class="product__item__pic set-bg" data-setbg="user/images/product/related/related4.jpg">
+                        <ul class="product__hover">
+                            <li><a href="user/images/product/related/related4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="#"><span class="icon_heart_alt"></span></a></li>
+                            <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                        </ul>
+                    </div>
+                    <div class="product__item__text">
+                        <h6><a href="#">Slim striped pocket shirt</a></h6>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="product__price">$ 59.0</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</section>
+<!-- Product Details Section End -->
+<!-- <script>
+    function addToWishlist (productId) {
+		
+        $.ajax({
+            url: '/addToWishList/'+productId,
+            method: 'get',
+            success: (response)  => {
+                if (response.status) {
+                    Swal.fire({
+                  
+                    
+                   icon: 'success',
+                //    text: productName,
+                   title: 'Item added to wishlist',
+                   showConfirmButton: false,
+                   timer: 1500
+                    })
+                } else {
+                    Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                  })
+                }
+            }
+            
+        })
+     }
+
+</script> -->
+<!-- <script>
+let message = document.createElement("div");
+message.innerHTML = "Item added";
+message.style.backgroundColor = "green";
+message.style.color = "white";
+message.style.padding = "10px";
+message.style.position = "fixed";
+message.style.top = "0";
+message.style.right = "0";
+
+document.body.appendChild(message);
+
+setTimeout(function() {
+  message.style.display = "none";
+}, 2000);
+
+</script> -->
+<script type="text/javascript">
+    function zoom(e){
+      var zoomer = e.currentTarget;
+      e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+      e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX
+      x = offsetX/zoomer.offsetWidth*100
+      y = offsetY/zoomer.offsetHeight*100
+      zoomer.style.backgroundPosition = x + '% ' + y + '%';
+    }
+    </script>
+
+<script>
+    function addtocart(id) {
+        $.ajax({
+          type: "POST",
+          url: "/addToCart/"+id,
+          data: {
+            id,
+          },
+          dataType: "json",
+          encode: true,
+        }).done(function (data) {
+           cartCout();
+        console.log(data)
+        if (data == "LOGIN FIRST") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Login first!",
+        footer: '<a class="text-decoration-none" href="/login">Go to login</a>',
+      });
+    }
+        else if (data == "added") {
+            Swal.fire({
+              icon: "success",
+              title: "Successfully added",
+              text: "Good job!",
+              timer: 2000,
+              footer: '<a class="text-decoration-none" href="/cart">GO TO CART</a>'
+            })
+             .then(() => {location.href = '/shoppage'})
+    };
+   
+       
+        })
+    }
+    
+    </script>
+    <script>
+    function wishlist(id) {
+        $.ajax({
+          type: "post",
+          url: "/addToWishlist/"+id,
+          data: {
+            id,
+          },
+          dataType: "json",
+          encode: true,
+        }).done(function (data) {
+           cartCout();
+          if (data == "LOGIN FIRST") {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Login first!",
+              footer: '<a class="text-decoration-none" href="/login">Go to login</a>',
+            });
+          } else if (data == "alreadyexit") {
+            Swal.fire({
+              icon: "warning",
+              title: "Already added",
+              footer:
+                '<a class="text-decoration-none" href="/wishlist">check whishlist</a>',
+            });
+          } else if (data.key == "added") {
+            Swal.fire({
+              icon: "success",
+              title: "Successfully added",
+              text: "Good job!",
+              footer:
+                '<a class="text-decoration-none" href="/wishlist">GO TO Wishlist</a>',
+            });
+          }
+        });
+      }
+
+</script>
+<%-include('../user/layouts/user-footer.ejs') %>

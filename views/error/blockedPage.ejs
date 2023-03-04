@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/svg img/logo.ico">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIMEX</title>
+  <link rel="icon" type="image/x-icon" href="/svg img/logo.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      min-height: 50px;
+    }
+
+    .head-text {
+      text-transform: uppercase;
+      width: 200px;
+      height: auto;
+      padding: 20px;
+    }
+
+    .head-text,
+    .main-wrapper {
+      width: 80%;
+      margin: auto;
+    }
+
+    .main-wrapper {
+      display: flex;
+    }
+
+    .scarecrow-img img {
+      width: 90%;
+      height: auto;
+    }
+
+    .error-text {
+      width: 70%;
+    }
+
+    .error-text h2 {
+      width: 80%;
+      font-size: 3.75rem;
+      letter-spacing: 0.5px;
+      font-weight: normal;
+    }
+
+    .error-text p {
+      width: 50%;
+      padding: 5px;
+    }
+
+    button {
+  cursor: pointer;
+  width: auto;
+  padding: 15px;
+  border: 1px solid #333;
+  border-radius: 3px;
+  color: white;
+  background-color: #333;
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+    footer {
+      padding: 15px;
+      text-align: center;
+      min-height: 50px;
+      margin-top: auto;
+    }
+
+    .fa-copyright {
+      font-weight: lighter;
+    }
+
+    /* star mobile-first media queries */
+
+    /* Small devices (landscape phones, 576px and up) */
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (max-width: 991.9px) {
+      .main-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .error-text h2 {
+        width: 100%;
+        font-size: 3rem;
+        line-height: 100%;
+        padding-top: 15px;
+      }
+
+      .error-text p {
+        width: 100%;
+        font-size: 0.8rem;
+        line-height: 150%;
+        padding-top: 15px;
+      }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {
+      .error-text h2 {
+        width: 100%;
+        line-height: 100%;
+        padding-top: 15px;
+      }
+
+      .error-text p {
+        width: 100%;
+        line-height: 150%;
+        padding-top: 15px;
+      }
+    }
+
+    /* end media queries */
+  </style>
+  <main>
+    <div class="main-wrapper mt-5">
+      <picture class="scarecrow-img">
+        <img src="https://raw.githubusercontent.com/nat-oku/devchallenges/main/Scarecrow.png" alt="scarecrow">
+      </picture>
+      <div class="error-text mt-5">
+        <h2>I have bad news for you</h2>
+        <p>Your account has been blocked by the Admin</p>
+        <span class="input-group-btn">
+          <a class="btn text-white bg-dark" href="/">Back to homepage</a>
+        </span>
+      </div>
+    </div>
+
+  </main>
+
+ 
+</body>
+
+</html>

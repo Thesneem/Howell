@@ -1,0 +1,70 @@
+<%-include('../admin/layouts/admin-header.ejs') %>
+<main class="h-full pb-16 overflow-y-auto">
+          <div class="container px-6 mx-auto grid">
+            <h2
+              class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
+            >
+            Report
+            </h2>
+            
+            <!-- General elements -->
+           
+          </div>
+
+
+          <!-- <div class="w-full overflow-hidden rounded-lg shadow-xs">
+            <div class="w-full overflow-x-auto"> -->
+                <div class="col-12 col-md-6 mx-3 bg-light p-1 text-dark">
+                    <form action="/admin/report/sales" method="post" id="reportForm">
+                      <div class="mb-1">
+                        <label for="" class=" text-dark">Report</label>
+                        <div class="input-group mb-3">
+                          <span class="input-group-text" id="basic-addon1"><i class="bi bi-clipboard-data"></i></span>
+            
+                          <select name="" id="report" class="form-control" onchange="changeAction()">
+                            <option disabled>Select</option>
+                            <option value="sales" selected>Sales</option>
+            
+                          </select>
+            
+                        </div>
+                      </div>
+            
+                      <div class="mb-1">
+                        <label for="" class=" text-dark">
+                          Date (From - To)
+                        </label>
+                        <div class="input-group mb-3">
+                          <input type="date" class="form-control" name="fromDate" placeholder="Date" aria-label="Date"
+                            id="fromDate" onchange="changeAction()">
+                        </div>
+                        <div class="input-group mb-3">
+                          <input type="date" class="form-control" name="toDate" placeholder="toDate" aria-label="toDate"
+                            id="toDate" onchange="changeAction()">
+                        </div>
+                      </div>
+                      <div class="mb-1">
+                        <button type="submit" class="btn btn-dark w-100" id="reportBtn" ><i
+                            class="bi bi-clipboard-data"></i> Open Report</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            
+              
+              </div>
+          </div>
+
+          <!-- <script>
+            function changeAction() {
+              if ($('#report').val() && $('#fromDate').val() && $('#toDate').val()) {
+                $('#reportForm').attr('action', '/admin/report/' + $('#report').val())
+                $('#reportBtn').prop('disabled', false)
+              }
+            }
+          </script> -->
+
+</main>
+</body>
+</html>

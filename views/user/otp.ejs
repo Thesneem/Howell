@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Howell Bag Store</title>
+
+
+<div class="otp bg-light" >
+  <div class="d-flex justify-content-center">
+      <h1 class="mt-3" ><span style="color: red;"></span>OTP verification <span class="Timehead"></span></h1>
+  </div>
+  <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+      <div class="bg-light border border-dark  rounded-3 border-3 " style="height: 70vh; width: 70vh;">
+              <div class="d-flex flex-column justify-content-center align-items-center mt-5" style="height: 50vh;">
+                  <h4>VERIFICATION CODE</h4>
+                  <p>Please enter the verification code sent to Mail</p>
+                  <form action="/verifyotp" method="post">
+                      <div class="form-outline flex-fill mt-3">
+                          <input name="otp" type="number" id="form3Example5cd" class="form-control" placeholder="Enter your OTP"/>
+                          <div class="d-flex flex-column mt-2">
+                          <button class="mt-2 btn btn-dark" type="submit">Submit</button> 
+                          </div>   
+                      </div>
+                    </form>
+                      <div class="d-flex flex-column mt-2">
+                         
+                         <form action="/resendotp" method="post"> <button class="mt-2 btn btn-dark" type="submit">ResendOTP</button> </form>
+                     
+                      </div>          
+                 
+              </div>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>

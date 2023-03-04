@@ -1,0 +1,678 @@
+<%-include('../user/layouts/user-header.ejs') %>
+
+
+<!-- modal address -->
+<div class="modal fade border-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <h3 class="modal-title fs-5 " id="exampleModalLabel">ADDRESS</h3>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"> <span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="actionmodel" action="" method="post">
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example3">Name</label>
+                            <input type="text" class="form-control" name="addressName" id="name" required />
+
+                        </div>
+
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example3">House</label>
+                            <input type="text" id="house" class="form-control" name="House" required />
+
+                        </div>
+
+
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example3">City</label>
+                            <input type="text" class="form-control" id="city" name="city" required />
+
+                        </div>
+
+
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example4">District</label>
+                            <input type="text" id="district" class="form-control " name="district" required />
+                        </div>
+
+
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example4">State</label>
+                            <input type="text" id="state" class="form-control " name="state" required />
+                        </div>
+
+                        <!-- district input -->
+                        <div class="form-outline mb-1">
+                            <label class="form-label" for="form3Example4">PIN</label>
+                            <input type="tel" id="pin" class="form-control " name="Pin" required />
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="d-flex justify-content-center mt-3">
+                            <button type="submit" class="btn btn-dark  ">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!-- address Modal -->
+
+  <div class="container light-style flex-grow-1 container-p-y">
+
+    <h4 class="font-weight-bold py-3 mb-4">
+      Account settings
+    </h4>
+
+    <div class="card overflow-hidden">
+      <div class="row no-gutters row-bordered row-border-light">
+        <div class="col-md-3 pt-0">
+          <div class="list-group list-group-flush account-settings-links">
+            <a class="list-group-item list-group-item-action active" data-toggle="list"
+              href="#account-general">General</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change
+              password</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Saved Address</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Order History</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#wallet">Wallet</a>
+
+            <!-- <a class="list-group-item list-group-item-action" data-toggle="list"
+              href="#account-connections">Connections</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list"
+              href="#account-notifications">Notifications</a> -->
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="account-general">
+
+              <!-- <div class="card-body media align-items-center">
+              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="d-block ui-w-80">
+              <div class="media-body ml-4">
+                <label class="btn btn-outline-primary">
+                  Upload new photo
+                  <input type="file" class="account-settings-fileinput">
+                </label> &nbsp;
+                <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+
+                <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+              </div>
+            </div> -->
+
+
+              <hr class="border-light m-0">
+
+              <!-- <div class="card-body">
+              <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control mb-1" value="nmaxwell">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" value="Nelle Maxwell">
+              </div>
+              <div class="form-group">
+                <label class="form-label">E-mail</label>
+                <input type="text" class="form-control mb-1" value="nmaxwell@mail.com">
+                <div class="alert alert-warning mt-3">
+                  Your email is not confirmed. Please check your inbox.<br>
+                  <a href="javascript:void(0)">Resend confirmation</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company</label>
+                <input type="text" class="form-control" value="Company Ltd.">
+              </div>
+            </div> -->
+
+
+              <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Full Name</h6>
+                      </div>
+                      <div class=" text-secondary">
+                        <%=user.fullName%>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class=" text-secondary">
+                        <%=user.email%>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Phone</h6>
+                      </div>
+                      <div class=" text-secondary">
+                        <%=user.phoneNumber%>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="text-right mt-3">
+                      <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
+                        aria-expanded="false" aria-controls="collapseExample">
+                        Edit Profile
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Edit Profile -->
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+
+                  <form action="/editProfile/<%=user._id %>" method="post">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Name</label>
+                      <input type="text" class="form-control" name="fullName" value="<%= user.fullName %>">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" name="email" class="form-control" aria-describedby="emailHelp"
+                        value="<%= user.email %>" disabled>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">phone number</label>
+                      <input type="phone" name="phoneNumber" class="form-control" aria-describedby="emailHelp"
+                        value="<%= user.phoneNumber %>">
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- edit profile end -->
+
+
+            </div>
+
+            <div class="tab-pane fade" id="account-change-password">
+              <div class="card-body pb-2">
+
+                <form id='changepassword-form' action="/changepassword/<%=user._id%>" method="post">
+                  <!-- <div class="form-group">
+                <label class="form-label">Current password</label>
+                <input type="password" class="form-control" id="currentpassword" name="currentpassword">
+              </div> -->
+
+                  <div class="form-group">
+                    <label class="form-label">New password</label>
+                    <input type="password" class="form-control" id="newpassword" name="newpassword" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label">Repeat new password</label>
+                    <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" required>
+                  </div>
+                  <input type="hidden" id="userId" name="userId" value="<%=user._id%>">
+
+                  <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="account-info">
+              <div class="card-body pb-2">
+
+
+                <!-- Address -->
+                <h5 class="text-secondary border-bottom py-2 mb-2">Saved Addresses</h5>
+                <%if (user.addresses.length==0){%>
+                  <h3 class="text-dark text-center">No Address Avaliable</h3>
+                  <p class="text-muted text-center"> Add new address</p>
+
+                  <% }else{ %>
+                    <% user.addresses.forEach(function(addresses,i){ %>
+                      <a class="text-decoration-none text-dark " data-bs-toggle="modal"
+                        data-bs-target="#accountCreationModal">
+                        <div class="card p-3 bg-light my-2" id="">
+                          <div class="d-flex justify-content-between">
+                            <h6>Address <%=i+1%>
+                            </h6>
+                            <a class="text-danger text-lg-end text-decoration-none"
+                              onclick="deleteaddress('<%=addresses._id%>')" href="#">
+                              Delete
+                            </a>
+                          </div>
+                          <div class="col-md-6">
+                            <p id="p"><b>
+                                <%= addresses.addressName%><br>
+                              </b>
+                              <%= addresses.House +', '+ addresses.city +' , ' +addresses.district+' ,'+ addresses.state
+                                +',' +addresses.Pin %>
+                            </p>
+                          </div>
+                          <a class="text-success text-lg-end text-decoration-none" data-toggle="modal"
+                            data-target="#exampleModal" onclick="editaddress('<%=addresses._id %>')" href="#"><small><i class="bi bi-pencil-square"></i>
+                              Edit</small>
+                          </a>
+                        </div>
+                      </a>
+                      <% }) %>
+                        <% } %>
+                          <div class="d-flex justify-content-center mt-3">
+                            <a class="btn btn-info" data-toggle="collapse" href="#collapseExample1" role="button"
+                              aria-expanded="false" aria-controls="collapseExample">
+                              Add Address
+                            </a>
+                          </div>
+
+                          <!-- Add address -->
+                          <div class="collapse" id="collapseExample1">
+                            <div class="card card-body">
+
+                              <form action="/addAddress/<%=user._id %>" method="post">
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Name</label>
+                                  <input type="text" class="form-control" name="addressName" value="">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">House</label>
+                                  <input type="text" name="House" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">City</label>
+                                  <input type="text" name="city" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">District</label>
+                                  <input type="text" name="district" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">State</label>
+                                  <input type="text" name="state" class="form-control" value="">
+                                </div>
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">PIN</label>
+                                  <input type="number" name="Pin" class="form-control" value="">
+                                </div>
+                                <button type="submit" class="btn btn-info">Submit</button>
+                              </form>
+                            </div>
+                          </div>
+
+                          <!-- Add Address -->
+
+
+
+                          <!-- <div class="form-group">
+                <label class="form-label">Bio</label>
+                <textarea class="form-control" rows="5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nunc arcu, dignissim sit amet sollicitudin iaculis, vehicula id urna. Sed luctus urna nunc. Donec fermentum, magna sit amet rutrum pretium, turpis dolor molestie diam, ut lacinia diam risus eleifend sapien. Curabitur ac nibh nulla. Maecenas nec augue placerat, viverra tellus non, pulvinar risus.</textarea>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Birthday</label>
+                <input type="text" class="form-control" value="May 3, 1995">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Country</label>
+                <select class="custom-select">
+                  <option>USA</option>
+                  <option selected="">Canada</option>
+                  <option>UK</option>
+                  <option>Germany</option>
+                  <option>France</option>
+                </select>
+              </div>
+
+
+            </div>
+            <hr class="border-light m-0">
+            <div class="card-body pb-2">
+
+              <h6 class="mb-4">Contacts</h6>
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-control" value="+0 (123) 456 7891">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Website</label>
+                <input type="text" class="form-control" value="">
+              </div> -->
+
+              </div>
+
+            </div>
+             <div class="tab-pane fade" id="account-social-links">
+              <div class="card-body pb-2">
+<!-- Order history start -->
+<div class="card-body ">
+  <% if(orderedItems.length==0){ %>
+
+  <h3 class="text-dark text-center">No Orders</h3>
+  <div class="d-flex justify-content-center flex-coloumn">
+    <a href="/shoppage" class="btn btn-success">Go to Shop</a>
+  </div>
+  <% }else{ %>
+
+  <div class="table-responsive mb-4 border border-2 border-black">
+    <table class="table text-nowrap">
+      <thead class="bg-light">
+        <tr>
+          <th class="border-0 p-3 ps-3" scope="col"> <strong class="text-sm text-uppercase">Ordered Date</strong></th>
+          <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Address</strong></th>
+          <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Total price</strong></th>
+          <th class="border-0 p-3" scope="col"> <strong class="text-sm text-uppercase">Payment method</strong></th>
+          <th class="border-0 p-3 text-center" scope="col"> <strong class="text-sm text-uppercase">status</strong></th>
+          <th class="border-0 p-3 text-center" scope="col"> <strong class="text-sm text-uppercase">View detials</strong></th>
+        </tr>
+      </thead>
+      <tbody class="border-0">
+        <% orderedItems.forEach((item)=>{ %>
+        <tr>
+          <th class="ps-0 py-3 border-light ps-3" scope="row">
+            <div class="d-flex align-items-center ">
+              <%const date = new Date(item.ordered_date)%>
+              <%const formattedDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`%>
+              <%=formattedDate%>
+            </div>
+          </th>
+          <th class="ps-0 py-3 border-light align-middle" scope="row">
+            <div class="ms-3"><%=item.address.addressName%><br><%=item.address.House%></div>
+          </th>
+          <td class="p-3 align-middle border-light">
+            <% if(item.paymentData.payment_status=='refund completed'){ %>
+
+            <span class="text-success"><%=(Math.round(item.bill_amount-(item.bill_amount*item.coupon.discount)/100))%></span>
+            <% }else{ %>
+              <span class="text-danger"><%=(Math.round(item.bill_amount))%></span>
+
+            <!-- <span class="text-danger">-<%=(Math.round(item.bill_amount-(item.bill_amount*item.coupon.discount)/100))%></span> -->
+            <% } %>
+
+          </td>
+          <td class="p-3 align-middle border-light">
+            <p class="mb-0 small"><%= item.paymentData.payment_method %></p>
+          </td>
+          <td class="p-3 align-middle border-light ps-5">
+            <%  if(item.delivery_status.canceled.state){ %>
+
+            <span class="badge border border-danger text-danger px-2 py-1  fw-bold">CANCELED</span>
+            <% }else if(item.delivery_status.returned.state){ %>
+
+            <span class="badge border border-warning text-warning px-2 py-1  fw-bold">RETURNED</span>
+
+            <% } else if(item.delivery_status.delivered.state){ %>
+
+            <span class="badge border border-success text-success px-2 py-1  fw-bold">DELIVERED</span>
+            <% }else if(item.delivery_status.out_for_delivery.state){ %>
+
+            <span class="badge border border-primary text-primary px-2 py-1  fw-bold">OUT_FOR_DELIVERY</span>
+
+            <% }else if(item.delivery_status.shipped.state){ %>
+
+            <span class="badge border border-info text-info px-2 py-1  fw-bold">SHIPPED</span>
+
+            <% }else if (item.delivery_status.ordered.state){ %>
+
+            <span class="badge border border-black text-black px-2 py-1  fw-bold">ORDERED</span>
+            <% } %>
+
+          </td>
+          </td>
+          <td class="p-4 text-center border-light">
+            <a href="/orderDetails/<%=item._id%>"><i class="bi bi-eye text-black"></i></a>
+          </td>
+        </tr>
+        <% }) %>
+
+        <% } %>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+              </div>
+<!-- Order history End -->
+
+
+               <!-- <div class="form-group">
+                  <label class="form-label">Twitter</label>
+                  <input type="text" class="form-control" value="https://twitter.com/user">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Facebook</label>
+                  <input type="text" class="form-control" value="https://www.facebook.com/user">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Google+</label>
+                  <input type="text" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">LinkedIn</label>
+                  <input type="text" class="form-control" value="">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Instagram</label>
+                  <input type="text" class="form-control" value="https://www.instagram.com/user">
+                </div>
+
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-connections">
+              <div class="card-body">
+                <button type="button" class="btn btn-twitter">Connect to <strong>Twitter</strong></button>
+              </div>
+              <hr class="border-light m-0">
+              <div class="card-body">
+                <h5 class="mb-2">
+                  <a href="javascript:void(0)" class="float-right text-muted text-tiny"><i class="ion ion-md-close"></i>
+                    Remove</a>
+                  <i class="ion ion-logo-google text-google"></i>
+                  You are connected to Google:
+                </h5>
+                nmaxwell@mail.com
+              </div>
+              <hr class="border-light m-0">
+              <div class="card-body">
+                <button type="button" class="btn btn-facebook">Connect to <strong>Facebook</strong></button>
+              </div>
+              <hr class="border-light m-0">
+              <div class="card-body">
+                <button type="button" class="btn btn-instagram">Connect to <strong>Instagram</strong></button>
+              </div>-->
+            </div> 
+            <div class="tab-pane fade" id="wallet">
+              <div class="card-body pb-2">
+
+                <h6 class="mb-4">Wallet Amount</h6>
+                <p>$<span><%=user.wallet%></span></p>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 
+  <div class="text-right mt-3">
+    <button type="button" class="btn btn-primary">Save changes</button>&nbsp;
+    <button type="button" class="btn btn-default">Cancel</button>
+  </div> -->
+
+  </div>
+  <script>
+    var password = document.getElementById("newpassword")
+
+
+    var confirmpassword = document.getElementById("confirmpassword");
+
+
+    function validatePassword() {
+      console.log("Password: " + password.value);
+      console.log("Confirm Password: " + confirmpassword.value);
+      if (password.value != confirmpassword.value) {
+        confirmpassword.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirmpassword.setCustomValidity('');
+      }
+    }
+
+    password.onchange = validatePassword;
+    confirmpassword.onkeyup = validatePassword;
+
+    var form = document.getElementById("changepassword-form");
+if(form){
+    form.onsubmit = function () {
+      console.log("Form submitted");
+      return validatePassword();
+    }};
+
+  </script>
+  <script>
+    // // handle form submission
+    // const form = document.getElementById('changepassword-form');
+    // form.addEventListener('submit', (event) => {
+    //   event.preventDefault();
+    //   // const currentPassword = form.elements.currentPassword.value;
+    //   const newPassword = form.elements.newpassword.value;
+    //   const confirmPassword = form.elements.confirmpassword.value;
+
+    //   // TODO: validate passwords and show error messages if necessary
+    //   $.ajax({
+    //     type: "POST",
+    //     url: "/changepassword/" + id,
+       
+    //     data: {
+    //       id: id, password: newPassword,
+    //       confmpwd: confirmPassword
+    //     }
+
+    //     }).done (function (response) {
+    //       if (response == 'success') {
+    //         Swal.fire(
+    //           'Success',
+    //           'Password Changed!',
+    //           'success'
+    //         ).then(() => {
+    //           location.href = '/login'
+    //         })
+    //       }
+    //       else {
+    //         Swal.fire({
+    //           icon: 'error',
+    //           title: 'Oops...',
+    //           text: 'Some error',
+
+    //         })
+    //       }
+    //     })
+    //   })
+
+    // })
+
+
+// handle form submission
+const form1 = document.getElementById('changepassword-form');
+form1.addEventListener('submit', (event) => {
+  event.preventDefault();
+  // const newPassword = form1.elements.newpassword.value;
+  // const confirmPassword = form1.elements.confirmpassword.value;
+  const newPassword = $("input[name='newpassword']").val();
+const confirmPassword = $("input[name='confirmpassword']").val();
+const id= $("#userId").val();
+console.log(newPassword+'newpaswd' + confirmPassword+'confmpasd'+id+'userid')
+  // TODO: validate passwords and show error messages if necessary
+  $.ajax({
+    type: "POST",
+    url: "/changepassword/" + id,
+    data: {
+      id:id ,
+      newPassword:newPassword,
+      confirmPassword: confirmPassword
+    }
+   
+  }).done(function (response) {
+    console.log(response)
+    if (response == 'success') {
+      Swal.fire({
+       icon: 'Success',
+       title: 'Password Changed!',
+        text:'success'
+       } ).then(() => {
+        // req.session.user='false'
+        location.href = '/logout'
+      })
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Some error',
+      })
+    }
+  });
+});
+
+
+  </script>
+
+  <script>
+    function deleteaddress(id) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type: "POST",
+            url: "/deleteaddress",
+            data: {
+              id,
+            },
+            dataType: "json",
+            encode: true,
+          }).done(function (data) {
+            $("#" + id + "item").remove();
+            Swal.fire("removed!", "This Address has been removed.", "success").then((results)=>
+            location.reload()
+            )
+          });
+        }
+      });
+    }
+
+  </script>
+
+  <script>
+    function editaddress(id) {
+  $.ajax({
+    type: "POST",
+    url: "/editaddress",
+    data: {
+      id,
+    },
+    dataType: "json",
+    encode: true,
+  }).done(function (data) {
+    
+    $("#actionmodel").attr("action", "/updateaddress/" + data._id);
+    $("#name").val(data.addressName);
+    $("#house").val(data.House);
+    $("#city").val(data.city);
+    $("#district").val(data.district);
+    $("#state").val(data.state);
+    $("#pin").val(data.Pin);
+  });
+}
+  </script>
+
+  <%-include('../user/layouts/user-footer.ejs') %>
