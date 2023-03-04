@@ -1,4 +1,4 @@
-const usermodel = require("../models/usermodel");
+const usermodel = require("../models/userModel");
 
 module.exports = {
   ajaxSession: async (req, res, next) => {

@@ -1,4 +1,4 @@
-const usermodel = require("../models/usermodel")
+const usermodel = require("../models/userModel")
 const sharp = require('sharp');
 const categorymodel = require("../models/categoryModel")
 const brandmodel = require("../models/brandsModel")
