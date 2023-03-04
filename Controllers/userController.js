@@ -265,12 +265,12 @@ module.exports = {
       const { email, password } = req.body;
       const user = await usermodel.findOne({ $and: [{ email: email }, { status: "unblocked" }] });
       if (!user) {
-        return res.render('Login', { loginerror: 'Invalid Credentials' });
+        return res.render('login', { loginerror: 'Invalid Credentials' });
       }
 
       const isUser = await bcrypt.compare(password, user.password);
       if (!isUser) {
-        return res.render('Login', { loginerror: 'Invalid Credentials' });
+        return res.render('login', { loginerror: 'Invalid Credentials' });
       }
       else {
         req.session.logIn = true
