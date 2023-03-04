@@ -264,6 +264,7 @@ module.exports = {
     try {
       const { email, password } = req.body;
       const user = await usermodel.findOne({ $and: [{ email: email }, { status: "unblocked" }] });
+      let loginerror;
       if (!user) {
         return res.render('login', { loginerror: 'Invalid Credentials' });
       }
