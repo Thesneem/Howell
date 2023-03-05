@@ -245,6 +245,7 @@ module.exports = {
                 });
 
         } catch (err) {
+            console.log(err)
             next(err)
         }
 
@@ -256,6 +257,7 @@ module.exports = {
             res.render('admin/editCategory', { category })
         }
         catch (err) {
+            console.log(err)
             next(err)
         }
     },
@@ -285,7 +287,7 @@ module.exports = {
                   .toFormat('jpeg', { quality: 100 })
                   .toFile(`public/admin/images/${newFilename}`, (err, info) => {
                     if (err) throw err;
-
+                    console.log(err)
                   });
               });
 
@@ -314,6 +316,7 @@ module.exports = {
                 res.redirect("/admin/categories");
             })
             .catch((err) => {
+                console.log(err)
                 req.session.message = {
                     type: 'danger',
                     message: 'Category with same name is already present'
@@ -323,6 +326,7 @@ module.exports = {
         
         }
         catch(err){
+            console.log(err)
             next(err)
         }
 
