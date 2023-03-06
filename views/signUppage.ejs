@@ -18,21 +18,21 @@
 
   </head>
   <body>
-    <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+    <div class="flex items-center min-h-screen p-6 bg-gray-50 ">
       <div
-        class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
+        class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl "
       >
         <div class="flex flex-col overflow-y-auto md:flex-row">
           <div class="h-32 md:h-auto md:w-1/2">
             <img
               aria-hidden="true"
-              class="object-cover w-full h-full dark:hidden"
+              class="object-cover w-full h-full"
               src="/admin/images/create-account-office.jpeg"
               alt="Office"
             />
             <img
               aria-hidden="true"
-              class="hidden object-cover w-full h-full dark:block"
+              class="hidden object-cover w-full h-full"
               src="/admin/images/create-account-office-dark.jpeg"
               alt="Office"
             />
@@ -40,37 +40,37 @@
           <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
             <div class="w-full">
               <h1
-                class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200"
+                class="mb-4 text-xl font-semibold text-gray-700 "
               >
                 Create HOWELL account
               </h1>
               <form  method="post" action="/otp">
 
               <label class="block text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Name</span>
+                <span class="text-gray-700 ">Name</span>
                 <input
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  class="block w-full mt-1 text-sm  focus:border-purple-400 focus:outline-none focus:shadow-outline-purple  form-input"
                   placeholder="Your Full Name" type="text" name="name" required pattern="[A-Z a-z]{3,22}"
                 />
               </label>
               <label class="block mt-4 text-sm">
                 <span class="text-gray-700 dark:text-gray-400">Mobile</span>
                 <input
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
                   placeholder="Your Mobile" name="phone" required pattern="[7896][0-9]{9}" type="tel"
                 />
               </label>
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Email</span>
+                <span class="text-gray-700 ">Email</span>
                 <input type="email"
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  class="block w-full mt-1 text-sm focus:border-purple-400 focus:outline-none focus:shadow-outline-purple  form-input"
                   placeholder="sample@email.com" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                 />
               </label>
               <label class="block mt-4 text-sm">
-                <span class="text-gray-700 dark:text-gray-400">Password</span>
+                <span class="text-gray-700 ">Password</span>
                 <input
-                  class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                  class="block w-full mt-1 text-sm  focus:border-purple-400 focus:outline-none focus:shadow-outline-purple form-input"
                   placeholder="***************" 
                   type="password" name="password" required pattern=".{8,}"
                 />
@@ -78,10 +78,10 @@
               
 
               <div class="flex mt-6 text-sm">
-                <label class="flex items-center dark:text-gray-400">
+                <label class="flex items-center">
                   <input
                     type="checkbox" required
-                    class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+                    class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple "
                   />
                   <span class="ml-2">
                     I agree to the
@@ -108,7 +108,7 @@
 
               <p class="mt-4">
                 <a
-                  class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                  class="text-sm font-medium text-purple-600 hover:underline"
                   href="/login"
                 >
                   Already have an account? Login
