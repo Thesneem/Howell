@@ -905,7 +905,7 @@ module.exports = {
         .findOne({ _id: req.params.id, userid: req.session.userid })
         .populate("products.product_id")
         .then((orderDetails) => {
-          res.render("user/ViewOrder", {
+          res.render("user/viewOrder", {
             orderDetails,
             user: req.session.user, login: true,
             page: 'Shop'
