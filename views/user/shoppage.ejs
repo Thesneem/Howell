@@ -215,8 +215,9 @@ $(document).ready(function() {
                                 <!-- <div class="label new">New</div> -->
                                 <ul class="product__hover">
                                     <li><a href="/admin/images/${product.image[0]}" class="image-popup"><span class="arrow_expand"></span></a></li>
-                                    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                    <li><a class="btn btn-sm btn-outline-dark" href="#!"><span class="icon_heart_alt" onclick="wishlist('<%= product._id %>')"></span></a></li>
+                                   <!-- <li><a href="#"><span class="icon_heart_alt"></span></a></li>-->
+                                    <!--<li><a href="#"><span class="icon_bag_alt"></span></a></li>-->
                                 </ul>
                             </div>
                         
