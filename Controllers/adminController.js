@@ -428,6 +428,10 @@ module.exports = {
         try {
             const id = req.params.id
             await brandmodel.findByIdAndDelete({ _id: id })
+            req.session.message = {
+                type: 'success',
+                message: 'Brand deleted successfully'
+              }
             res.redirect("/admin/brands")
 
         }
@@ -497,9 +501,17 @@ module.exports = {
             await newProduct
                 .save()
                 .then(() => {
+                    req.session.message = {
+                        type: 'success',
+                        message: 'Product added successfully'
+                      }
                     res.redirect("/admin/listProducts");
                 })
                 .catch((err) => {
+                    req.session.message = {
+                        type: 'danger',
+                        message: 'Product with same name is already present'
+                      }
                     res.redirect("/admin/addProduct");
                 });
         }
@@ -547,6 +559,10 @@ module.exports = {
         try {
             const id = req.params.id
             await productmodel.findByIdAndDelete({ _id: id });
+            req.session.message = {
+                type: 'success',
+                message: 'Product deleted successfully'
+              }
             res.redirect('/admin/listProducts')
         }
         catch (err) {
@@ -615,8 +631,15 @@ module.exports = {
               
             )
             await data.save().then(() => {
+                req.session.message = {
+                    type: 'success',
+                    message: 'Product edited successfully'
+                  }
+                
                 res.redirect('/admin/listProducts')
             })
+       
+
 
         }
         catch (err) {
@@ -739,6 +762,10 @@ module.exports = {
         try {
             const id = req.params.id
             await couponmodel.findByIdAndDelete({ _id: id })
+            req.session.message = {
+                type: 'success',
+                message: 'Coupon deleted successfully'
+              }
             res.redirect('/admin/coupons')
         }
         catch (err) {
@@ -894,6 +921,10 @@ const bannerimage = image != null ? image.map((img) => newFilename) : null;
         try {
             const id = req.params.id
             await bannermodel.findByIdAndDelete({ _id: id })
+            req.session.message = {
+                type: 'success',
+                message: 'Banner deleted successfully'
+              }
             res.redirect('/admin/banners')
         }
         catch (err) {

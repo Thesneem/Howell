@@ -6,6 +6,13 @@
             >
               Add Product
             </h2>
+
+            <% if (message) { %>
+              <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">&times;</button>
+                <strong><%= message.message %> </strong>
+              </div> 
+              <% } %>
             
             <!-- General elements -->
            <form action="/admin/addProduct" method="post" enctype="multipart/form-data">
