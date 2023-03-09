@@ -233,8 +233,8 @@
                         Are you sure want to cancel this order
                       </div>
                       <div class="modal-footer">`
-                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">NO</button>
-                        <button type="button" class="btn btn-danger" onclick="cancelOrder('<%= orderDetails._id %>');return false">Yes</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">NO</button>
+                        <button type="button" class="btn btn-danger" onclick="cancelOrder('<%= orderDetails._id %>');return false" data-dismiss="modal">Yes</button>
                       </div>
                     </div>
                   </div>
